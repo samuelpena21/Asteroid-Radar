@@ -8,20 +8,18 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.squareup.picasso.Picasso
 import com.udacity.asteroidradar.R
 import com.udacity.asteroidradar.databinding.FragmentMainBinding
 import com.udacity.asteroidradar.ui.adapters.AsteroidsAdapter
+import com.udacity.asteroidradar.ui.viewmodels.AsteroidFilter
 import com.udacity.asteroidradar.ui.viewmodels.MainViewModel
 import com.udacity.asteroidradar.ui.viewmodels.UIState
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class MainFragment : Fragment() {
@@ -93,6 +91,10 @@ class MainFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.show_today_asteroids -> viewModel.filterBy(AsteroidFilter.TODAY)
+            else -> viewModel.filterBy(AsteroidFilter.WEEK)
+        }
         return true
     }
 }

@@ -12,8 +12,12 @@ import androidx.room.Query
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.udacity.asteroidradar.Asteroid
+import com.udacity.asteroidradar.Constants
 import com.udacity.asteroidradar.PictureOfDay
 import kotlinx.coroutines.flow.Flow
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 @Entity
 data class AsteroidEntity(
@@ -39,7 +43,7 @@ data class PictureOfDayEntity(
 
 @Dao
 interface AsteroidDao {
-    @Query("SELECT * FROM AsteroidEntity")
+    @Query("SELECT * FROM AsteroidEntity ORDER BY closeApproachDate ASC")
     fun getAllAsteroids(): Flow<List<AsteroidEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
