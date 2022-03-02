@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="asteroid"
+            type="com.udacity.asteroidradar.Asteroid" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_marginVertical="16dp"
+        android:layout_marginHorizontal="16dp"
+        tools:background="@color/app_background"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/name_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:ellipsize="end"
+            android:textStyle="bold"
+            android:text="@{asteroid.codename}"
+            android:textColor="@android:color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="65909 (1998 FH12)"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2" />
+
+        <TextView
+            android:id="@+id/date_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="8dp"
+            android:text="@{asteroid.closeApproachDate}"
+            tools:text="2022-03-06"
+            app:layout_constraintTop_toBottomOf="@+id/name_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <ImageView
+            android:id="@+id/hazardous_level_img"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            tools:src="@drawable/ic_status_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            statusIcon="@{asteroid.isPotentiallyHazardous}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline2"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="40dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
