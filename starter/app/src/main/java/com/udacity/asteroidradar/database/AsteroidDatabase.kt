@@ -58,6 +58,9 @@ interface AsteroidDao {
     @Delete
     suspend fun delete(asteroidEntity: AsteroidEntity)
 
+    @Query("DELETE FROM AsteroidEntity WHERE closeApproachDate >= DATE('now')")
+    suspend fun deleteOldAsteroids()
+
     @Delete
     suspend fun delete(pictureOfDayEntity: PictureOfDayEntity)
 
