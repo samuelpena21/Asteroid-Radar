@@ -52,14 +52,17 @@ interface AsteroidDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(vararg pictureOfDayEntity: PictureOfDayEntity)
 
-    @Query("SELECT * FROM PictureOfDayEntity")
+    @Query("SELECT * FROM PictureOfDayEntity ORDER BY date DESC LIMIT 1")
     fun getPictureOfDay(): Flow<PictureOfDayEntity?>
 
     @Delete
     suspend fun delete(asteroidEntity: AsteroidEntity)
 
-    @Query("DELETE FROM AsteroidEntity WHERE closeApproachDate >= DATE('now')")
+    @Query("DELETE FROM AsteroidEntity WHERE closeApproachDate <= DATE('now')")
     suspend fun deleteOldAsteroids()
+
+    @Query("DELETE FROM PictureOfDayEntity WHERE date <= DATE('now')")
+    suspend fun deleteOldPictures()
 
     @Delete
     suspend fun delete(pictureOfDayEntity: PictureOfDayEntity)

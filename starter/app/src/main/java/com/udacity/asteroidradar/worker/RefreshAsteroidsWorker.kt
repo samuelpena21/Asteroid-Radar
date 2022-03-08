@@ -1,6 +1,7 @@
 package com.udacity.asteroidradar.worker
 
 import android.content.Context
+import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.udacity.asteroidradar.database.AsteroidDatabase.Companion.getDatabase
@@ -15,8 +16,10 @@ class RefreshAsteroidsWorker(appContext: Context, params: WorkerParameters) :
             repository.deleteAsteroidsBeforeToday()
             repository.refreshAsteroids()
             repository.refreshPictureOfTheDay()
+            Log.d("RefreshAsteroidsWorker", "Worker, Success")
             Result.success()
         } catch (e: Exception) {
+            Log.d("RefreshAsteroidsWorker", "Worker Error, $e")
             Result.retry()
         }
     }

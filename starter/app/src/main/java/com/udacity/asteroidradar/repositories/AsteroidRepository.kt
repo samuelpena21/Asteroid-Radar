@@ -31,8 +31,6 @@ class AsteroidRepository(private val database: AsteroidDatabase) {
                 val startDate = getTodayDateFormatted()
                 val endDate = getSeventhDayFromToday()
                 val result = Network.asteroidsService.getAsteroidsAsync(startDate, endDate)
-                //TODO: Create the worker to delete the asteroids before today. Or filter the database to
-                //avoid showing the asteroids before today.
                 val resultObject = parseAsteroidsJsonResult(JSONObject(result)).map { it.toAsteroidEntity() }.toTypedArray()
                 database.asteroidDao.insertAll(*resultObject)
             } catch (e: Exception) {
