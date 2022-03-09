@@ -20,4 +20,9 @@
     <string name="not_hazardous_asteroid_image">Image d\'astéroïde non dangereux</string>
     <string name="this_is_nasa_s_picture_of_day_showing_nothing_yet">Ceci est la photo du jour de la NASA, ne montrant rien pour le moment</string>
     <string name="nasa_picture_of_day_content_description_format">Photo du jour de la NASA : %s</string>
+    <string name="help_button">Bouton d\'aide</string>
+    <string name="this_is_the_detailed_info_of_the_asteroid">Voici les informations détaillées de l\'astéroïde</string>
+    <string name="hazardous_content_description">Cet astéroïde est dangereux… Soyez prudent</string>
+    <string name="not_hazardous_content_description">Cet astéroïde n\'est pas dangereux… Nous sommes en sécurité !</string>
+    <string name="this_is_the_image_of_the_day_from_the_nasa_servers">This is the image of the day from the NASA servers</string>
 </resources>
