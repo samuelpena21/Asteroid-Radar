@@ -8,7 +8,20 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="CustomBody1" parent="TextAppearance.MaterialComponents.Body2">
+    <style name="CustomBody1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/default_text_color</item>
+        <item name="android:lines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="DetailHeader" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/default_text_color</item>
+    </style>
+
+    <style name="DetailValue" parent="DetailHeader">
+        <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/default_text_color</item>
     </style>
 </resources>
